@@ -26,14 +26,15 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <div className="login-container">
+        <div className="login-image"></div>
+        <div className="login-container col-sm-12 col-md-5 col-lg-3 bg-dark">
           <div className="form-group">
-            <label className="username-label" htmlFor="userName">
+            <label className="username-label text-white" htmlFor="userName">
               Username
             </label>
             <input
               type="text"
-              className="form-control username-input"
+              className="form-control username-input bg-secondary text-white"
               id="userName"
               name="userName"
               value={this.state.userName}
@@ -44,7 +45,7 @@ class Login extends React.Component {
           <div>
             <button
               type="submit"
-              className="login-submit btn btn-sm btn-success"
+              className="login-submit btn btn-sm btn-secondary"
               onClick={this.submit}
             >
               Login
@@ -53,7 +54,7 @@ class Login extends React.Component {
           <div>
             <button
               type="reset"
-              className="login-cancel btn btn-sm btn-danger"
+              className="login-cancel btn btn-sm btn-secondary"
               onClick={this.cancel}
             >
               Cancel

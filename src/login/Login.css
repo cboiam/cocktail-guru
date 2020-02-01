@@ -5,20 +5,44 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background: gray;
+  z-index: 999;
+}
+
+.login-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+      90deg,
+      rgba(180, 58, 58, 0.6),
+      rgba(252, 204, 69, 0.6)
+    ),
+    url("/assets/cocktails.jpg");
+  background-size: cover;
 }
 
 .login-container {
   position: relative;
   padding: 40px;
-  width: 400px;
-  background: white;
+  background: #ffffff;
 }
 
-.login-close {
-  position: absolute;
-  right: 20px;
-  top: 20px;
+@media (min-width: 768px) {
+  .login-container {
+    border-radius: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .login {
+    justify-content: left;
+  }
+
+  .login-container {
+    margin-left: 200px;
+  }
 }
 
 .username-label {
@@ -27,10 +51,12 @@
 
 .username-input {
   margin-top: 20px;
+  border-radius: 15px;
 }
 
 .login-submit,
 .login-cancel {
   width: 100%;
   margin-top: 10px;
+  border-radius: 15px;
 }
