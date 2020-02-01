@@ -13,6 +13,10 @@ class Login extends React.Component {
   updateUserName = event => this.setState({ userName: event.target.value });
 
   submit = () => {
+    if (!this.state.userName) {
+      return;
+    }
+
     this.props.login(this.state.userName);
     this.props.history.goBack();
   };
