@@ -37,6 +37,7 @@ class Login extends React.Component {
               className="form-control username-input bg-secondary text-white"
               id="userName"
               name="userName"
+              autoComplete="off"
               value={this.state.userName}
               onChange={this.updateUserName}
             />
@@ -45,7 +46,7 @@ class Login extends React.Component {
           <div>
             <button
               type="submit"
-              className="login-submit btn btn-sm btn-secondary"
+              className="login-submit btn btn-sm btn-success"
               onClick={this.submit}
             >
               Login
@@ -54,7 +55,7 @@ class Login extends React.Component {
           <div>
             <button
               type="reset"
-              className="login-cancel btn btn-sm btn-secondary"
+              className="login-cancel btn btn-sm btn-danger"
               onClick={this.cancel}
             >
               Cancel
