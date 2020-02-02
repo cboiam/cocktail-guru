@@ -1,12 +1,15 @@
+import "./Home.css";
 import React from "react";
-import Header from "./header/Header";
+import Filters from "./filters/Filters";
 
 export default class Home extends React.Component {
   render() {
     return (
-      <React.Fragment>
-        <Header login={this.props.userName} />
-      </React.Fragment>
+      <div className="home">
+        <div className="col-md-6">
+          <Filters />
+        </div>
+      </div>
     );
   }
 }

@@ -6,7 +6,7 @@ import { faCocktail } from "@fortawesome/free-solid-svg-icons";
 
 export default props => {
   let login;
-  if (props.login === "") {
+  if (props.userName === "") {
     login = (
       <Link
         to="/login"
@@ -30,8 +30,8 @@ export default props => {
     <header className="header">
       <nav className="navbar navbar-dark bg-dark">
         <div>
-          <h1 className="header-title navbar-brand mb-0">
-            <FontAwesomeIcon icon={faCocktail} className="header-icon" />
+          <h1 className="logo navbar-brand mb-0">
+            <FontAwesomeIcon icon={faCocktail} className="logo-icon" />
             Cocktail Guru
           </h1>
         </div>

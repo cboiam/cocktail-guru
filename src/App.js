@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./login/Login";
 import Logout from "./logout/Logout";
 import Home from "./home/Home";
+import Header from "./header/Header";
 
 export default class App extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ export default class App extends Component {
           <Logout logout={this.logout} />
         </Route>
         <Route path="/">
+          <Header userName={this.state.userName} />
           <Home userName={this.state.userName} />
         </Route>
       </BrowserRouter>

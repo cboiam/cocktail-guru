@@ -24,24 +24,26 @@
 }
 
 .login-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
   position: relative;
   padding: 40px;
+  height: 100%;
   background: #ffffff;
 }
 
-@media (min-width: 768px) {
-  .login-container {
-    border-radius: 15px;
-  }
+.logo {
+  text-align: center;
 }
 
-@media (min-width: 992px) {
+.logo-icon {
+  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
   .login {
     justify-content: left;
-  }
-
-  .login-container {
-    margin-left: 200px;
   }
 }
 
