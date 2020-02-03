@@ -2,6 +2,7 @@ import "./Filters.css";
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import filter from "../mocks/list.json";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -11,20 +12,26 @@ class Filters extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get(
-        `https://www.thecocktaildb.com/api/json/v1/1/list.php?${this.state.type[0]}=list`
-      )
-      .then(response => {
-        const filters = response.data.drinks
-          .map(f => {
-            const filterKey = Object.keys(f)[0];
-            return f[filterKey];
-          })
-          .filter(f => f !== "" && f !== null);
+    // axios
+    //   .get(
+    //     `https://www.thecocktaildb.com/api/json/v1/1/list.php?${this.state.type[0]}=list`
+    //   )
+    //   .then(response => {
+    //     this.mapResponse(response.data.drinks)
+    //   });
 
-        this.setState({ filters });
-      });
+    this.mapResponse(filter.drinks);
+  }
+
+  mapResponse(response){
+    const filters = response
+    .map(f => {
+      const filterKey = Object.keys(f)[0];
+      return f[filterKey];
+    })
+    .filter(f => f !== "" && f !== null);
+
+  this.setState({ filters });
   }
 
   render() {
@@ -37,7 +44,7 @@ class Filters extends React.Component {
       </Link>
     ));
 
-    return <div className="filters-page container">{filters}</div>;
+    return <div className="container">{filters}</div>;
   }
 }
 

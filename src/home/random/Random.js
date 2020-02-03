@@ -6,6 +6,7 @@ import Tag from "../../shared/tag/Tag";
 import { Link } from "react-router-dom";
 import { faArrowRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import drinks from "../../mocks/filter.json";
 
 export default class Random extends React.Component {
   constructor(props) {
@@ -16,13 +17,18 @@ export default class Random extends React.Component {
   load = () => {
     this.setState({ loaded: false });
 
-    axios
-      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-      .then(response => {
-        this.setState({
-          drink: response.data.drinks[0]
-        });
-      });
+    // axios
+    //   .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+    //   .then(response => {
+    //     this.setState({
+    //       drink: response.data.drinks[0]
+    //     });
+    //   });
+
+    this.setState({
+      loaded: true,
+      drink: drinks.drinks[0]
+    });
   };
 
   componentDidMount() {
@@ -60,7 +66,7 @@ export default class Random extends React.Component {
             <div className="random-description-content">
               <div className={loadedClass}>
                 <Link
-                  to={`/drink/${this.state.drink.idDrink}`}
+                  to={`/drinks/detail/${this.state.drink.idDrink}`}
                   className="random-drink btn rounded-0 text-white"
                 >
                   <h2 className="random-drink-title">

@@ -1,0 +1,43 @@
+.drink-detail {
+    margin-top: 10px;
+}
+
+.drink-detail:last-child {
+    margin-bottom: 20px;
+}
+
+.drink-title {   
+    margin-left: 30px;
+}
+
+.drink-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drink-info {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.drink-link:hover {
+    text-decoration: none;
+}
+
+.drink-image {
+    padding: 0;
+    width: 125px;
+}
+
+.drink-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.drink-icon {
+    margin-right: 30px;
+}

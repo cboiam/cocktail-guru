@@ -6,6 +6,7 @@ import Logout from "./logout/Logout";
 import Home from "./home/Home";
 import Header from "./header/Header";
 import Filters from "./filters/Filters";
+import Drinks from "./drinks/Drinks";
 
 export default class App extends Component {
   constructor(props) {
@@ -30,6 +31,9 @@ export default class App extends Component {
         <Header userName={this.state.userName} />
         <Route path="/filters">
           <Filters />
+        </Route>
+        <Route path="/drinks">
+          <Drinks />
         </Route>
         <Route path="/" exact>
           <Home userName={this.state.userName} />
