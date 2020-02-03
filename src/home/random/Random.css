@@ -44,6 +44,10 @@
   margin-bottom: 30px;
 }
 
+.random-drink-title {
+  max-width: calc(100% - 31px);
+}
+
 .randomize,
 .randomize button {
   width: 100%;

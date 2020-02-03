@@ -5,11 +5,6 @@ import Search from "./search/Search";
 import Random from "./random/Random";
 
 export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { filters: [] };
-  }
-
   render() {
     return (
       <div className="home">

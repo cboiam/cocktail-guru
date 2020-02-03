@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { faArrowRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class Random extends React.Component {
+export default class Random extends React.Component {
   constructor(props) {
     super(props);
     this.state = { drink: "", loaded: false };
@@ -63,7 +63,9 @@ class Random extends React.Component {
                   to={`/drink/${this.state.drink.idDrink}`}
                   className="random-drink btn rounded-0 text-white"
                 >
-                  <h2>{this.state.drink.strDrink}</h2>
+                  <h2 className="random-drink-title">
+                    {this.state.drink.strDrink}
+                  </h2>
                   <FontAwesomeIcon
                     className="random-link"
                     icon={faArrowRight}
@@ -113,5 +115,3 @@ class Random extends React.Component {
     );
   }
 }
-
-export default Random;
