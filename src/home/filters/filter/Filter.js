@@ -1,8 +1,8 @@
 import "./Filter.css";
 import React from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
-import Loading from "../../../loading/Loading";
+import { withRouter, Link } from "react-router-dom";
+import Loading from "../../../shared/loading/Loading";
 
 class Filter extends React.Component {
   constructor(props) {
@@ -30,11 +30,14 @@ class Filter extends React.Component {
 
   render() {
     const imageClass = this.state.loaded ? "d-block" : "d-none";
-    const loadingClass = !this.state.loaded ? "d-block" : "d-none";
+    const loadingClass = !this.state.loaded ? "d-flex" : "d-none";
 
     return (
       <div className="filter" onClick={this.goToFilter}>
-        <div className="filter-content bg-dark text-white">
+        <Link
+          to={this.props.link}
+          className="filter-content bg-dark text-white"
+        >
           <img
             className={`filter-image ${imageClass}`}
             src={this.state.img}
@@ -43,7 +46,7 @@ class Filter extends React.Component {
           />
           <Loading className={`filter-image ${loadingClass}`} />
           <div className="filter-name h4 mb-0">{this.props.children}</div>
-        </div>
+        </Link>
       </div>
     );
   }

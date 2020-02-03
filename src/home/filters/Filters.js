@@ -8,7 +8,7 @@ export default props => (
       <Filter link="/filters/categories">Categories</Filter>
       <Filter link="/filters/glasses">Glasses</Filter>
       <Filter link="/filters/ingredients">Ingredients</Filter>
-      <Filter link="/filters/alcoholic">Alcoholic</Filter>
+      <Filter link="/filters/alcoholics">Alcoholic</Filter>
     </div>
   </div>
 );

@@ -1,11 +1,12 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: space-evenly;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .filter-container {
+  height: 100%;
   position: relative;
 }
 

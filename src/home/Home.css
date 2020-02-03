@@ -1,1 +1,19 @@
+.home {
+  margin-top: 3vw;
+  padding: 0 2vw;
+}
 
+.home-content {
+  flex-direction: column-reverse;
+}
+
+.home-filters,
+.home-search {
+  margin-bottom: 3vw;
+}
+
+@media (min-width: 992px) {
+  .home-content {
+    flex-direction: row;
+  }
+}

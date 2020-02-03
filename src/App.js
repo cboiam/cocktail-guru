@@ -26,8 +26,8 @@ export default class App extends Component {
         <Route path="/logout">
           <Logout logout={this.logout} />
         </Route>
-        <Route path="/">
-          <Header userName={this.state.userName} />
+        <Header userName={this.state.userName} />
+        <Route path="/" exact>
           <Home userName={this.state.userName} />
         </Route>
       </BrowserRouter>

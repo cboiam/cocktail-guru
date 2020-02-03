@@ -1,0 +1,27 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  height: 65px;
+}
+
+.search-bar .search-icon {
+  width: 70px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.search {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-right: 1px solid #ffffff;
+  font-size: 2rem;
+  padding: 6px 25px;
+}
+
+.search:focus {
+  outline: none;
+  border: none;
+  border-right: 1px solid #ffffff;
+  box-shadow: none;
+}
