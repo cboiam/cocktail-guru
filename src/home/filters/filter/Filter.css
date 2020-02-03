@@ -29,6 +29,10 @@
   object-fit: cover;
 }
 
+.filter-image.loading-container {
+  height: 85%;
+}
+
 .filter-name {
   display: flex;
   align-items: center;

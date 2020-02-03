@@ -10,7 +10,7 @@ export default props => {
     login = (
       <Link
         to="/login"
-        className="auth-button btn btn-outline-danger my-2 my-sm-0"
+        className="auth-button btn btn-outline-danger my-2 my-sm-0 rounded-0"
       >
         Login
       </Link>
@@ -19,7 +19,7 @@ export default props => {
     login = (
       <Link
         to="/logout"
-        className="auth-button btn btn-outline-danger my-2 my-sm-0"
+        className="auth-button btn btn-outline-danger my-2 my-sm-0 rounded-0"
       >
         Logout
       </Link>
@@ -30,10 +30,10 @@ export default props => {
     <header className="header">
       <nav className="navbar navbar-dark bg-dark">
         <div>
-          <h1 className="logo navbar-brand mb-0">
+          <Link to="/" className="logo h1 navbar-brand mb-0">
             <FontAwesomeIcon icon={faCocktail} className="logo-icon" />
             Cocktail Guru
-          </h1>
+          </Link>
         </div>
         {login}
       </nav>

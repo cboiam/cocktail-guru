@@ -73,21 +73,21 @@ export default class Random extends React.Component {
                 </Link>
                 <div className="d-none d-lg-block">
                   <Tag
-                    link={`/filter/glasses/${encodeURIComponent(
+                    link={`/drinks/glasses/${encodeURIComponent(
                       this.state.drink.strGlass
                     )}`}
                   >
                     {this.state.drink.strGlass}
                   </Tag>
                   <Tag
-                    link={`/filter/categories/${encodeURIComponent(
+                    link={`/drinks/categories/${encodeURIComponent(
                       this.state.drink.strCategory
                     )}`}
                   >
                     {this.state.drink.strCategory}
                   </Tag>
                   <Tag
-                    link={`/filter/alcoholics/${encodeURIComponent(
+                    link={`/drinks/alcoholics/${encodeURIComponent(
                       this.state.drink.strAlcoholic
                     )}`}
                   >

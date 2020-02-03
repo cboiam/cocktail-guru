@@ -1,0 +1,7 @@
+.filter-link {
+  margin-top: 10px;
+}
+
+.filter-link:last-child {
+  margin-bottom: 40px;
+}
