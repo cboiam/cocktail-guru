@@ -2,9 +2,9 @@ import "./Search.css";
 import React from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
-export default class Search extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = { search: "Search..." };
@@ -35,6 +35,24 @@ export default class Search extends React.Component {
     }
   };
 
+  onEnter = event => {
+    if (event.key !== "Enter") {
+      return;
+    }
+
+    if (
+      this.state.search === null ||
+      this.state.search === "" ||
+      this.state.search === "Search..."
+    ) {
+      return;
+    }
+
+    this.props.history.push(
+      `/drinks/search/${encodeURIComponent(this.state.search)}`
+    );
+  };
+
   render() {
     return (
       <div className={this.props.className}>
@@ -44,6 +62,7 @@ export default class Search extends React.Component {
             onChange={this.update}
             onFocus={this.clean}
             onBlur={this.reset}
+            onKeyDown={this.onEnter}
             type="text"
             className={`search form-control bg-transparent rounded-0 text-white ${this.props.color}`}
           />
@@ -62,3 +81,5 @@ export default class Search extends React.Component {
     );
   }
 }
+
+export default withRouter(Search);

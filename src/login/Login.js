@@ -41,7 +41,7 @@ class Login extends React.Component {
               </label>
               <input
                 type="text"
-                className="form-control username-input bg-secondary text-white"
+                className="form-control username-input bg-secondary text-white rounded-0"
                 id="userName"
                 name="userName"
                 autoComplete="off"
@@ -53,7 +53,7 @@ class Login extends React.Component {
             <div>
               <button
                 type="submit"
-                className="login-submit btn btn-sm btn-success"
+                className="login-submit btn btn-sm btn-success rounded-0"
                 onClick={this.submit}
               >
                 Login
@@ -62,7 +62,7 @@ class Login extends React.Component {
             <div>
               <button
                 type="reset"
-                className="login-cancel btn btn-sm btn-danger"
+                className="login-cancel btn btn-sm btn-danger rounded-0"
                 onClick={this.cancel}
               >
                 Cancel
