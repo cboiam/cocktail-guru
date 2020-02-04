@@ -3,7 +3,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCocktail } from "@fortawesome/free-solid-svg-icons";
-import Search from "../home/search/Search";
+import Search from "../shared/search/Search";
 
 const header = props => {
   const hideSearch = props.location.pathname === "/";
@@ -39,7 +39,13 @@ const header = props => {
           </Link>
         </div>
         <div className="header-controls">
-          <Search color="text-danger" icon="btn-outline-danger" className={`header-search ${hideSearch ? "d-none" : ""}`} />
+          <Search
+            color="text-danger"
+            icon="btn-outline-danger"
+            className={`header-search d-none ${
+              hideSearch ? "d-md-none" : "d-md-block"
+            }`}
+          />
           {login}
         </div>
       </nav>

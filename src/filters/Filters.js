@@ -7,31 +7,30 @@ import filter from "../mocks/list.json";
 class Filters extends React.Component {
   constructor(props) {
     super(props);
-    const type = props.location.pathname.replace("/filters/", "").split("/")[0];
-    this.state = { type, filters: [] };
+    this.state = { type: this.props.match.params.type, filters: [] };
   }
 
   componentDidMount() {
-    // axios
-    //   .get(
-    //     `https://www.thecocktaildb.com/api/json/v1/1/list.php?${this.state.type[0]}=list`
-    //   )
-    //   .then(response => {
-    //     this.mapResponse(response.data.drinks)
-    //   });
+    axios
+      .get(
+        `https://www.thecocktaildb.com/api/json/v1/1/list.php?${this.state.type[0]}=list`
+      )
+      .then(response => {
+        this.mapResponse(response.data.drinks);
+      });
 
-    this.mapResponse(filter.drinks);
+    // this.mapResponse(filter.drinks);
   }
 
-  mapResponse(response){
+  mapResponse(response) {
     const filters = response
-    .map(f => {
-      const filterKey = Object.keys(f)[0];
-      return f[filterKey];
-    })
-    .filter(f => f !== "" && f !== null);
+      .map(f => {
+        const filterKey = Object.keys(f)[0];
+        return f[filterKey];
+      })
+      .filter(f => f !== "" && f !== null);
 
-  this.setState({ filters });
+    this.setState({ filters });
   }
 
   render() {

@@ -1,7 +1,7 @@
 import "./Home.css";
 import React from "react";
 import Filters from "./filters/Filters";
-import Search from "./search/Search";
+import Search from "../shared/search/Search";
 import Random from "./random/Random";
 
 export default class Home extends React.Component {

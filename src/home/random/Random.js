@@ -17,18 +17,18 @@ export default class Random extends React.Component {
   load = () => {
     this.setState({ loaded: false });
 
-    // axios
-    //   .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
-    //   .then(response => {
-    //     this.setState({
-    //       drink: response.data.drinks[0]
-    //     });
-    //   });
+    axios
+      .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
+      .then(response => {
+        this.setState({
+          drink: response.data.drinks[0]
+        });
+      });
 
-    this.setState({
-      loaded: true,
-      drink: drinks.drinks[0]
-    });
+    // this.setState({
+    //   loaded: true,
+    //   drink: drinks.drinks[0]
+    // });
   };
 
   componentDidMount() {

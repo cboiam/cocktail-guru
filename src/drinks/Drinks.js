@@ -1,43 +1,66 @@
 import "./Drinks.css";
 import React from "react";
 import drinks from "../mocks/filter.json";
-import { Link } from "react-router-dom";
-import Tag from "../shared/tag/Tag";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import Drink from "./drink/Drink";
+import _ from "lodash";
 
-export default class Drinks extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { drinks: [] };
-    }
+class Drinks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { drinks: [] };
+  }
 
-    componentDidMount() {
-        this.setState({ drinks: drinks.drinks });
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    const shouldUpdate =
+      !_.isEqual(this.state.drinks, nextState.drinks) ||
+      this.props.match.params.filter !== nextProps.match.params.filter ||
+      this.props.match.params.value !== nextProps.match.params.value;
 
-    render() {
-        return (
-            <div className="drinks container">
-                {this.state.drinks.map(d => (
-                    <div className="drink-detail bg-dark row">
-                        <Link className="drink-link" to={`/drinks/detail/${d.idDrink}`}>
-                            <div className="drink-info">
-                                <div className="drink-image">
-                                    <img src="/assets/drink.jpg" />
-                                </div>
-                                <h4 className="drink-title h4 text-white"
-                                >
-                                    {d.strDrink}
-                                </h4>
-                            </div>
-                            <div className="drink-icon text-white">
-                                <FontAwesomeIcon icon={faChevronRight} className="h4 mb-0" />
-                            </div>
-                        </Link>
-                    </div>))
-    }
-            </div>
-        );
-    }
+    return shouldUpdate;
+  }
+
+  getDrinks() {
+    const endpoint = this.getEndpoint();
+    axios.get(endpoint).then(response => {
+      this.setState({ drinks: response.data.drinks });
+    });
+
+    // this.setState({ drinks: drinks.drinks });
+  }
+
+  componentDidMount() {
+    this.getDrinks();
+  }
+
+  componentDidUpdate(previousProps, previousState, snapshot) {
+    this.getDrinks();
+  }
+
+  getEndpoint() {
+    const endpoints = {
+      ingredients: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=",
+      alcoholics: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=",
+      categories: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=",
+      glasses: "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=",
+      search: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+    };
+
+    return (
+      endpoints[this.props.match.params.filter] + this.props.match.params.value
+    );
+  }
+
+  render() {
+    return (
+      <div className="drinks container">
+        {this.state.drinks.map(d => (
+          <Drink key={d.idDrink} drink={d} />
+        ))}
+      </div>
+    );
+  }
 }
+
+export default withRouter(Drinks);

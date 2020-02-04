@@ -25,11 +25,15 @@ export default class Search extends React.Component {
   };
 
   search = event => {
-    if (this.state.search !== null && this.state.search !== "" && this.state.search !== "Search...") {
+    if (
+      this.state.search === null ||
+      this.state.search === "" ||
+      this.state.search === "Search..."
+    ) {
       event.preventDefault();
       event.stopPropagation();
     }
-  }
+  };
 
   render() {
     return (
@@ -45,10 +49,13 @@ export default class Search extends React.Component {
           />
           <Link
             onClick={this.search}
-            to={`/search/${encodeURIComponent(this.state.search)}`}
+            to={`/drinks/search/${encodeURIComponent(this.state.search)}`}
             className={`btn search-icon rounded-0 ${this.props.icon}`}
           >
-            <FontAwesomeIcon className={`text-white ${this.props.color}`} icon={faSearch} />
+            <FontAwesomeIcon
+              className={`text-white ${this.props.color}`}
+              icon={faSearch}
+            />
           </Link>
         </div>
       </div>

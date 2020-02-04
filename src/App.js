@@ -29,10 +29,10 @@ export default class App extends Component {
           <Logout logout={this.logout} />
         </Route>
         <Header userName={this.state.userName} />
-        <Route path="/filters">
+        <Route path="/filters/:type">
           <Filters />
         </Route>
-        <Route path="/drinks">
+        <Route path="/drinks/:filter/:value">
           <Drinks />
         </Route>
         <Route path="/" exact>

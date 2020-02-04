@@ -23,17 +23,18 @@
 .header-search .search {
   border: 1px solid #dc3545;
   border-right: none;
-  padding: 5px 25px;
+  padding: 4px 25px 5px 25px;
 }
 
-.header-search .search, .header-search .search-icon {
+.header-search .search,
+.header-search .search-icon {
   font-size: 1.3rem;
 }
 
 .header-search .search-icon {
-  padding: 4px 0 3px 0;
+  padding: 2px 0 3px 0;
 }
 
 .header-search .search-icon:hover .fa-search {
-  color: #ffffff!important;
+  color: #ffffff !important;
 }
