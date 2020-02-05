@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Login from "./login/Login";
-import Logout from "./logout/Logout";
-import Home from "./home/Home";
-import Header from "./header/Header";
-import Filters from "./filters/Filters";
-import Drinks from "./drinks/Drinks";
-import Drink from "./drink/Drink";
+import Login from "./components/login/Login";
+import Logout from "./components/logout/Logout";
+import Home from "./components/home/Home";
+import Header from "./components/header/Header";
+import Filters from "./components/filters/Filters";
+import Drinks from "./components/drinks/Drinks";
+import Drink from "./components/drink/Drink";
 
 export default class App extends Component {
   constructor(props) {
