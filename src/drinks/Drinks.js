@@ -1,6 +1,5 @@
 import "./Drinks.css";
 import React from "react";
-import drinks from "../mocks/filter.json";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import Drink from "./drink/Drink";
@@ -26,8 +25,6 @@ class Drinks extends React.Component {
     axios.get(endpoint).then(response => {
       this.setState({ drinks: response.data.drinks });
     });
-
-    // this.setState({ drinks: drinks.drinks });
   }
 
   componentDidMount() {

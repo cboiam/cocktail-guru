@@ -1,0 +1,80 @@
+.drink-detail-page {
+  margin-top: 20px;
+}
+.drink-detail-image {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.drink-detail-image img {
+  max-width: 100%;
+}
+
+.drink-detail-image {
+  cursor: pointer;
+  position: relative;
+  width: 48%;
+}
+
+.drink-detail-image::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.drink-detail-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.drink-detail-header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.drink-detail-like {
+  width: 100%;
+  display: flex;
+  padding: 0 -15px;
+}
+
+.drink-detail-like button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.drink-detail-like button:focus {
+  box-shadow: none;
+}
+
+.like-icon,
+.dislike-icon {
+  margin-right: 10px;
+}
+
+.drink-detail-info {
+  margin-top: 25px;
+  padding: 0 35px;
+}
+
+@media (min-width: 768px) {
+  .drink-detail-header {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+  }
+
+  .drink-detail-like {
+    width: 300px;
+  }
+
+  .drink-detail-like button {
+    margin-bottom: 0;
+  }
+}

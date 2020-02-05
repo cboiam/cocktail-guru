@@ -2,7 +2,6 @@ import "./Filters.css";
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
-import filter from "../mocks/list.json";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -18,8 +17,6 @@ class Filters extends React.Component {
       .then(response => {
         this.mapResponse(response.data.drinks);
       });
-
-    // this.mapResponse(filter.drinks);
   }
 
   mapResponse(response) {

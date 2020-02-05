@@ -6,7 +6,6 @@ import Tag from "../../shared/tag/Tag";
 import { Link } from "react-router-dom";
 import { faArrowRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import drinks from "../../mocks/filter.json";
 
 export default class Random extends React.Component {
   constructor(props) {
@@ -24,11 +23,6 @@ export default class Random extends React.Component {
           drink: response.data.drinks[0]
         });
       });
-
-    // this.setState({
-    //   loaded: true,
-    //   drink: drinks.drinks[0]
-    // });
   };
 
   componentDidMount() {
