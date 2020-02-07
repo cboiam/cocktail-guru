@@ -33,6 +33,7 @@ class Filters extends React.Component {
   render() {
     const filters = this.state.filters.map(filter => (
       <Link
+        key={`filter-${filter.toLowerCase().replace(" ", "-").replace("/", "")}`}
         to={`/drinks/${this.state.type}/${encodeURIComponent(filter)}`}
         className="filter-link btn btn-lg col-12 bg-dark text-white rounded-0"
       >

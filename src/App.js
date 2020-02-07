@@ -12,13 +12,23 @@ import Drink from "./components/drink/Drink";
 export default class App extends Component {
   constructor(props) {
     super(props);
+
+    const user = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*=\s*([^;]*).*$)|^.*$/, "$1");
+
     this.state = {
-      userName: ""
+      userName: user
     };
   }
 
-  login = userName => this.setState({ userName });
-  logout = () => this.setState({ userName: "" });
+  login = userName => {
+    document.cookie = `user=${userName}`;
+    this.setState({ userName });
+  }
+
+  logout = () => {
+    document.cookie = `user=; expires=${new Date().toString()}`;
+    this.setState({ userName: "" });
+  }
 
   render() {
     return (
