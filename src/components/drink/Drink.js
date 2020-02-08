@@ -6,6 +6,7 @@ import Tag from "../shared/tag/Tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import Loading from "../shared/loading/Loading";
+import { withToggle } from "../../hoc/WithToggle";
 
 class Drink extends React.Component {
   constructor(props) {
@@ -55,6 +56,57 @@ class Drink extends React.Component {
     const loadingClass = !this.state.loaded ? "" : "d-none";
     const ingredients = this.getIngredients();
 
+    const ToggledLike = withToggle(() => (
+      <div className="drink-detail-like">
+        <button
+          onClick={this.like}
+          className={`btn btn-lg text-white rounded-0 ${
+            this.state.liked ? "text-success" : ""
+            }`}
+        >
+          <FontAwesomeIcon className="like-icon" icon={faThumbsUp} />
+          Like
+              </button>
+        <button
+          onClick={this.dislike}
+          className={`btn btn-lg text-white rounded-0 ${
+            this.state.disliked ? "text-danger" : ""
+            }`}
+        >
+          <FontAwesomeIcon className="dislike-icon" icon={faThumbsDown} />
+          Dislike
+              </button>
+      </div>
+    ), "drink_like");
+
+    const ToggledTags = withToggle(() => (
+      <div>
+        <Tag
+          link={`/drinks/categories/${this.state.drink.strCategory}`}
+        >
+          {this.state.drink.strCategory}
+        </Tag>
+        <Tag link={`/drinks/glasses/${this.state.drink.strGlass}`}>
+          {this.state.drink.strGlass}
+        </Tag>
+        <Tag
+          link={`/drinks/alcoholics/${this.state.drink.strAlcoholic}`}
+        >
+          {this.state.drink.strAlcoholic}
+        </Tag>
+        {ingredients
+          ? ingredients.map(i => (
+            <Tag
+              link={`/drinks/ingredients/${i.name}`}
+              key={`ingredient-tag-${i.name}`}
+            >
+              {i.name}
+            </Tag>
+          ))
+          : null}
+      </div>
+    ), "tags", "drink_tags");
+
     return (
       <div className="drink-detail-page container">
         <div className="row text-white bg-dark">
@@ -70,53 +122,10 @@ class Drink extends React.Component {
             </div>
           </div>
           <div className="drink-detail-header col-md-7 col-lg-9">
-            <div className="drink-detail-like">
-              <button
-                onClick={this.like}
-                className={`btn btn-lg text-white rounded-0 ${
-                  this.state.liked ? "text-success" : ""
-                }`}
-              >
-                <FontAwesomeIcon className="like-icon" icon={faThumbsUp} />
-                Like
-              </button>
-              <button
-                onClick={this.dislike}
-                className={`btn btn-lg text-white rounded-0 ${
-                  this.state.disliked ? "text-danger" : ""
-                }`}
-              >
-                <FontAwesomeIcon className="dislike-icon" icon={faThumbsDown} />
-                Dislike
-              </button>
-            </div>
+            <ToggledLike />
             <div>
               <h1>{this.state.drink.strDrink}</h1>
-              <div>
-                <Tag
-                  link={`/drinks/categories/${this.state.drink.strCategory}`}
-                >
-                  {this.state.drink.strCategory}
-                </Tag>
-                <Tag link={`/drinks/glasses/${this.state.drink.strGlass}`}>
-                  {this.state.drink.strGlass}
-                </Tag>
-                <Tag
-                  link={`/drinks/alcoholics/${this.state.drink.strAlcoholic}`}
-                >
-                  {this.state.drink.strAlcoholic}
-                </Tag>
-                {ingredients
-                  ? ingredients.map(i => (
-                      <Tag
-                        link={`/drinks/ingredients/${i.name}`}
-                        key={`ingredient-tag-${i.name}`}
-                      >
-                        {i.name}
-                      </Tag>
-                    ))
-                  : null}
-              </div>
+              <ToggledTags />
             </div>
           </div>
           <div className="drink-detail-info">
@@ -135,11 +144,11 @@ class Drink extends React.Component {
                 <ul>
                   {ingredients
                     ? ingredients.map(i => (
-                        <li key={`ingredient-${i.name}`}>
-                          {i.name}
-                          {i.measure && `: ${i.measure}`}
-                        </li>
-                      ))
+                      <li key={`ingredient-${i.name}`}>
+                        {i.name}
+                        {i.measure && `: ${i.measure}`}
+                      </li>
+                    ))
                     : null}
                 </ul>
               </div>
@@ -154,4 +163,4 @@ class Drink extends React.Component {
   }
 }
 
-export default withRouter(Drink);
+export default withToggle(withRouter(Drink), "drink");

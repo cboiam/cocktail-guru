@@ -2,6 +2,7 @@ import "./Filters.css";
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
+import { withToggle } from "../../hoc/WithToggle";
 
 class Filters extends React.Component {
   constructor(props) {
@@ -45,4 +46,4 @@ class Filters extends React.Component {
   }
 }
 
-export default withRouter(Filters);
+export default withToggle(withRouter(Filters), "filters");

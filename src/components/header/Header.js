@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCocktail } from "@fortawesome/free-solid-svg-icons";
 import Search from "../shared/search/Search";
+import { withToggle } from "../../hoc/WithToggle";
 
 const header = props => {
   const hideSearch = props.location.pathname === "/";
@@ -29,6 +30,16 @@ const header = props => {
     );
   }
 
+  const ToggledSearch = withToggle(() => (
+    <Search
+      color="text-danger"
+      icon="btn-outline-danger"
+      className={`header-search d-none ${
+        hideSearch ? "d-md-none" : "d-md-block"
+        }`}
+    />
+  ), "header_search")
+
   return (
     <header className="header">
       <nav className="navbar navbar-dark bg-dark">
@@ -39,13 +50,7 @@ const header = props => {
           </Link>
         </div>
         <div className="header-controls">
-          <Search
-            color="text-danger"
-            icon="btn-outline-danger"
-            className={`header-search d-none ${
-              hideSearch ? "d-md-none" : "d-md-block"
-            }`}
-          />
+          <ToggledSearch />
           {login}
         </div>
       </nav>

@@ -6,11 +6,12 @@ import Tag from "../../shared/tag/Tag";
 import { Link } from "react-router-dom";
 import { faArrowRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withToggle } from "../../../hoc/WithToggle";
 
-export default class Random extends React.Component {
+class Random extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { drink: "", loaded: false };
+    this.state = { drink: {}, loaded: false };
   }
 
   load = () => {
@@ -37,12 +38,56 @@ export default class Random extends React.Component {
     const loadedClass = this.state.loaded ? "" : "d-none";
     const loadingClass = !this.state.loaded ? "" : "d-none";
 
+    const ToggledRandomizer = withToggle(() => (
+      <React.Fragment>
+        <h4 className="random-title">Your random drink for today.</h4>
+        <div className="randomize">
+          <button
+            className="btn btn-lg btn-outline-danger rounded-0"
+            onClick={this.load}
+          >
+            <FontAwesomeIcon
+              className="randomize-icon"
+              icon={faRedoAlt}
+            />
+            Get another
+                </button>
+        </div>
+      </React.Fragment>
+    ), "random_button");
+
+    const ToggledTags = withToggle(() => (
+      <div className="d-none d-lg-block">
+        <Tag
+          link={`/drinks/glasses/${encodeURIComponent(
+            this.state.drink.strGlass
+          )}`}
+        >
+          {this.state.drink.strGlass}
+        </Tag>
+        <Tag
+          link={`/drinks/categories/${encodeURIComponent(
+            this.state.drink.strCategory
+          )}`}
+        >
+          {this.state.drink.strCategory}
+        </Tag>
+        <Tag
+          link={`/drinks/alcoholics/${encodeURIComponent(
+            this.state.drink.strAlcoholic
+          )}`}
+        >
+          {this.state.drink.strAlcoholic}
+        </Tag>
+      </div>
+    ), "tags", "home_tags");
+
     return (
       <div className="random row">
         <div className="random-image-container col-12 col-md-7">
           <div className="random-content bg-dark text-white">
             <Link
-              to={`/drink/${this.state.drink.idDrink}`}
+              to={`/drinks/detail/${this.state.drink.idDrink}`}
               className="random-image-link"
             >
               <img
@@ -71,43 +116,9 @@ export default class Random extends React.Component {
                     icon={faArrowRight}
                   />
                 </Link>
-                <div className="d-none d-lg-block">
-                  <Tag
-                    link={`/drinks/glasses/${encodeURIComponent(
-                      this.state.drink.strGlass
-                    )}`}
-                  >
-                    {this.state.drink.strGlass}
-                  </Tag>
-                  <Tag
-                    link={`/drinks/categories/${encodeURIComponent(
-                      this.state.drink.strCategory
-                    )}`}
-                  >
-                    {this.state.drink.strCategory}
-                  </Tag>
-                  <Tag
-                    link={`/drinks/alcoholics/${encodeURIComponent(
-                      this.state.drink.strAlcoholic
-                    )}`}
-                  >
-                    {this.state.drink.strAlcoholic}
-                  </Tag>
-                </div>
+                <ToggledTags />
               </div>
-              <h4 className="random-title">Your random drink for today.</h4>
-              <div className="randomize">
-                <button
-                  className="btn btn-lg btn-outline-danger rounded-0"
-                  onClick={this.load}
-                >
-                  <FontAwesomeIcon
-                    className="randomize-icon"
-                    icon={faRedoAlt}
-                  />
-                  Get another
-                </button>
-              </div>
+              <ToggledRandomizer />
             </div>
           </div>
         </div>
@@ -115,3 +126,5 @@ export default class Random extends React.Component {
     );
   }
 }
+
+export default withToggle(Random, "random");

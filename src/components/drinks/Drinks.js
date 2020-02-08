@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import Drink from "./drink/Drink";
 import _ from "lodash";
+import { withToggle } from "../../hoc/WithToggle";
 
 class Drinks extends React.Component {
   constructor(props) {
@@ -60,4 +61,4 @@ class Drinks extends React.Component {
   }
 }
 
-export default withRouter(Drinks);
+export default withToggle(withRouter(Drinks), "drinks");

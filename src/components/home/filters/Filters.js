@@ -1,8 +1,9 @@
 import "./Filters.css";
 import React from "react";
 import Filter from "./filter/Filter";
+import { withToggle } from "../../../hoc/WithToggle";
 
-export default props => (
+const filters = props => (
   <div className="filter-container">
     <div className="filters">
       <Filter link="/filters/categories">Categories</Filter>
@@ -12,3 +13,5 @@ export default props => (
     </div>
   </div>
 );
+
+export default withToggle(filters, "filters");
