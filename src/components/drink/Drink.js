@@ -2,10 +2,10 @@ import "./Drink.css";
 import React from "react";
 import Axios from "axios";
 import { withRouter } from "react-router-dom";
-import Tag from "../shared/tag/Tag";
+import Tag from "../../shared/tag/Tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import Loading from "../shared/loading/Loading";
+import Loading from "../../shared/loading/Loading";
 
 class Drink extends React.Component {
   constructor(props) {

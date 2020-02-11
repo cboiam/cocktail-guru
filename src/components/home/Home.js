@@ -4,7 +4,7 @@ import Filters from "./filters/Filters";
 import Search from "../shared/search/Search";
 import Random from "./random/Random";
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   render() {
     return (
       <div className="home">
@@ -21,5 +21,3 @@ class Home extends React.Component {
     );
   }
 }
-
-export default Home;
