@@ -3,7 +3,6 @@ import React from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter, Link } from "react-router-dom";
-import { withToggle } from "../../../hoc/WithToggle";
 
 class Search extends React.Component {
   constructor(props) {
@@ -83,4 +82,4 @@ class Search extends React.Component {
   }
 }
 
-export default withToggle(withRouter(Search), "search");
+export default withRouter(Search);
