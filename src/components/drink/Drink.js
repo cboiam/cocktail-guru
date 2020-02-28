@@ -23,13 +23,11 @@ class Drink extends React.Component {
 
   like = () => {
     const liked = this.state.liked;
-    console.log("like");
     this.setState({ liked: !liked, disliked: false });
   };
 
   dislike = () => {
     const disliked = this.state.disliked;
-    console.log("dislike");
     this.setState({ liked: false, disliked: !disliked });
   };
 
