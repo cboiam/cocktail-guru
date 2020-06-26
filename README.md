@@ -6,6 +6,12 @@ This application was built as a demonstration of feature flags to play with them
 
 ## How to use
 
+Install dependencies fist with:
+
+```
+npm install
+```
+
 Run the application using:
 
 ```
