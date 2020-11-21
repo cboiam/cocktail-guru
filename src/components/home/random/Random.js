@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import { faArrowRight, faRedoAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 export default class Random extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = { drink: "", loaded: false };
@@ -42,7 +45,7 @@ export default class Random extends React.Component {
         <div className="random-image-container col-12 col-md-7">
           <div className="random-content bg-dark text-white">
             <Link
-              to={`/drink/${this.state.drink.idDrink}`}
+              to={`${baseUrl}/drinks/detail/${this.state.drink.idDrink}`}
               className="random-image-link"
             >
               <img
@@ -60,7 +63,7 @@ export default class Random extends React.Component {
             <div className="random-description-content">
               <div className={loadedClass}>
                 <Link
-                  to={`/drinks/detail/${this.state.drink.idDrink}`}
+                  to={`${baseUrl}/drinks/detail/${this.state.drink.idDrink}`}
                   className="random-drink btn rounded-0 text-white"
                 >
                   <h2 className="random-drink-title">

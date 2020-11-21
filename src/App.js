@@ -9,6 +9,8 @@ import Filters from "./components/filters/Filters";
 import Drinks from "./components/drinks/Drinks";
 import Drink from "./components/drink/Drink";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -33,25 +35,25 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/login">
+        <Route path={`${baseUrl}/login`}>
           <Login login={this.login} />
         </Route>
-        <Route path="/logout">
+        <Route path={`${baseUrl}/logout`}>
           <Logout logout={this.logout} />
         </Route>
         <Header userName={this.state.userName} />
-        <Route path="/filters/:type">
+        <Route path={`${baseUrl}/filters/:type`}>
           <Filters />
         </Route>
         <Switch>
-          <Route path="/drinks/detail/:id">
+          <Route path={`${baseUrl}/drinks/detail/:id`}>
             <Drink />
           </Route>
-          <Route path="/drinks/:filter/:value">
+          <Route path={`${baseUrl}/drinks/:filter/:value`}>
             <Drinks />
           </Route>
         </Switch>
-        <Route path="/" exact>
+        <Route path={`${baseUrl}/`} exact>
           <Home userName={this.state.userName} />
         </Route>
       </BrowserRouter>

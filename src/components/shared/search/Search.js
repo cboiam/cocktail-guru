@@ -4,6 +4,8 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter, Link } from "react-router-dom";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,7 @@ class Search extends React.Component {
     }
 
     this.props.history.push(
-      `/drinks/search/${encodeURIComponent(this.state.search)}`
+      `${baseUrl}/drinks/search/${encodeURIComponent(this.state.search)}`
     );
   };
 
@@ -68,7 +70,7 @@ class Search extends React.Component {
           />
           <Link
             onClick={this.search}
-            to={`/drinks/search/${encodeURIComponent(this.state.search)}`}
+            to={`${baseUrl}/drinks/search/${encodeURIComponent(this.state.search)}`}
             className={`btn search-icon rounded-0 ${this.props.icon}`}
           >
             <FontAwesomeIcon

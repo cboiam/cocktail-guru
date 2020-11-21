@@ -4,6 +4,8 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Loading from "../../shared/loading/Loading";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 export default class Drink extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ export default class Drink extends React.Component {
       <div className="drink-detail bg-dark row">
         <Link
           className="drink-link"
-          to={`/drinks/detail/${this.props.drink.idDrink}`}
+          to={`${baseUrl}/drinks/detail/${this.props.drink.idDrink}`}
         >
           <div className="drink-info">
             <div className="drink-image">

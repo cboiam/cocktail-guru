@@ -4,6 +4,8 @@ import axios from "axios";
 import { withRouter, Link } from "react-router-dom";
 import Loading from "../../../shared/loading/Loading";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 class Filter extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +33,7 @@ class Filter extends React.Component {
     return (
       <div className="filter">
         <Link
-          to={this.props.link}
+          to={baseUrl + this.props.link}
           className="filter-content bg-dark text-white"
         >
           <img

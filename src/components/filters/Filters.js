@@ -3,6 +3,8 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 class Filters extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ class Filters extends React.Component {
     const filters = this.state.filters.map(filter => (
       <Link
         key={`filter-${filter.toLowerCase().replace(" ", "-").replace("/", "")}`}
-        to={`/drinks/${this.state.type}/${encodeURIComponent(filter)}`}
+        to={`${baseUrl}/drinks/${this.state.type}/${encodeURIComponent(filter)}`}
         className="filter-link btn btn-lg col-12 bg-dark text-white rounded-0"
       >
         {filter}
