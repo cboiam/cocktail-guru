@@ -19,7 +19,7 @@
       rgba(180, 58, 58, 0.6),
       rgba(252, 204, 69, 0.6)
     ),
-    url("/assets/cocktails.jpg");
+    url("./cocktails.jpg");
   background-size: cover;
 }
 

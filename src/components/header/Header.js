@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCocktail } from "@fortawesome/free-solid-svg-icons";
 import Search from "../shared/search/Search";
 
+const baseUrl = process.env.REACT_APP_BASE_URL ?? "";
+
 const header = props => {
   const hideSearch = props.location.pathname === "/";
 
@@ -12,7 +14,7 @@ const header = props => {
   if (props.userName === "") {
     login = (
       <Link
-        to="/login"
+        to={`${baseUrl}/login`}
         className="auth-button btn btn-outline-danger my-2 my-sm-0 rounded-0"
       >
         Login
@@ -21,7 +23,7 @@ const header = props => {
   } else {
     login = (
       <Link
-        to="/logout"
+        to={`${baseUrl}/logout`}
         className="auth-button btn btn-outline-danger my-2 my-sm-0 rounded-0"
       >
         Logout
@@ -33,7 +35,7 @@ const header = props => {
     <header className="header">
       <nav className="navbar navbar-dark bg-dark">
         <div>
-          <Link to="/" className="logo h1 navbar-brand mb-0">
+          <Link to={`${baseUrl}/`} className="logo h1 navbar-brand mb-0">
             <FontAwesomeIcon icon={faCocktail} className="logo-icon" />
             Cocktail Guru
           </Link>
